@@ -1,1 +1,16 @@
-<p>product-list works!</p>
+<div class="mx-auto max-w-screen-xl">
+    @if (productState.state().status === "loading") {
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
+        @for (product of productState.state().status; track product) {
+          <app-product-card-skeleton class="block"></app-product-card-skeleton>
+        }
+      </div>
+    } @else {
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
+        @for (product of productState.state().products; track product) {
+          <app-product-card class="block" [product]="product"></app-product-card>
+        }
+      </div>
+    }
+  </div>
+  

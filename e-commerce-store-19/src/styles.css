@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 :root {
-  --color-primary: #f3c614;
   color-scheme: dark light;
   --font-family-sans: "Nunito", sans-serif;
   --font-family-serif: "Merriweather", serif;
