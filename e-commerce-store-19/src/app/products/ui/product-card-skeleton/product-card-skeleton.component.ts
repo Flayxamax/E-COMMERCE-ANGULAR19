@@ -8,5 +8,4 @@ import { Product } from '../../../shared/interfaces/product-interface';
   styleUrl: './product-card-skeleton.component.css',
 })
 export class ProductCardSkeletonComponent {
-  product = input<Product>();
 }

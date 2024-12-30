@@ -12,4 +12,35 @@ import { ProductCardSkeletonComponent } from '../../ui/product-card-skeleton/pro
 })
 export default class ProductListComponent {
   productState = inject(ProductStateService);
+
+  products = Array(8).fill(null);
+
+  changePage() {
+    const page = this.productState.state.page() + 1;
+    this.productState.changePages.next(page);
+  }
+
+  selectCategory(category: string) {
+    this.productState.changeCategory.next(category);
+  }
+
+  selectAllProducts() {
+    this.selectCategory('');
+  }
+
+  getElectronicProducts() {
+    this.selectCategory('electronics');
+  }
+
+  getJewelryProducts() {
+    this.selectCategory('jewelery');
+  }
+
+  getMenClothingProducts() {
+    this.selectCategory("men's clothing");
+  }
+
+  getWomenClothingProducts() {
+    this.selectCategory("women's clothing");
+  }
 }
