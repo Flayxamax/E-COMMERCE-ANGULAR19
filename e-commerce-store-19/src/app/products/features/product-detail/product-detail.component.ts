@@ -2,6 +2,8 @@ import { Component, effect, inject, input } from '@angular/core';
 import { ProductDetailStateService } from '../../data-access/product-detail-state.service';
 import { CurrencyPipe } from '@angular/common';
 import { ProductDetailSkeletonComponent } from '../../ui/product-detail-skeleton/product-detail-skeleton.component';
+import { CartStateService } from '../../../shared/data-access/cart-state.service';
+import { Product } from '../../../shared/interfaces/product-interface';
 
 @Component({
   selector: 'app-product-detail',
@@ -12,8 +14,19 @@ import { ProductDetailSkeletonComponent } from '../../ui/product-detail-skeleton
 })
 export default class ProductDetailComponent {
   _productDetailState = inject(ProductDetailStateService);
+  cartState = inject(CartStateService).state;
 
   id = input.required<string>();
+
+  addToCart() {
+    const product = this._productDetailState.state.product();
+    if (product) {
+      this.cartState.add({
+        product: product,
+        quantity: 1,
+      });
+    }
+  }
 
   constructor() {
     effect(() => {

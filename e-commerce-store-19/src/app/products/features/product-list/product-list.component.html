@@ -126,7 +126,11 @@
       class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4"
     >
       @for (product of productState.state().products; track product) {
-        <app-product-card class="block" [product]="product"></app-product-card>
+        <app-product-card
+          class="block"
+          [product]="product"
+          (addToCart)="addToCart($event)"
+        ></app-product-card>
       }
     </div>
     <div class="flex flex-wrap justify-end w-full mt-4 sm:w-auto sm:mt-0 p-4">
